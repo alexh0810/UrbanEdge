@@ -1,4 +1,3 @@
-import { UserCircleIcon } from '@heroicons/react/outline';
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
