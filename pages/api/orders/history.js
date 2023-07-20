@@ -1,6 +1,6 @@
+import { getToken } from 'next-auth/jwt';
 import Order from '@/models/Order';
 import db from '@/utils/db';
-import { getToken } from 'next-auth/jwt';
 
 const handler = async (req, res) => {
   const user = await getToken({ req, secret: process.env.SECRET });
@@ -8,15 +8,10 @@ const handler = async (req, res) => {
   if (!user) {
     return res.status(401).send('Signin required!');
   }
-
   await db.connect();
-  const newOrder = new Order({
-    ...req.body,
-    user: user._id,
-  });
-
-  const order = await newOrder.save();
-  res.status(201).send(order);
+  const orders = await Order.find({ user: user._id });
+  await db.disconnect();
+  res.send(orders);
 };
 
 export default handler;
