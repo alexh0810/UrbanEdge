@@ -26,6 +26,8 @@ const data = {
       numReviews: 9,
       countInStock: 20,
       description: 'The latest iPhone model by Apple',
+      isFeatured: true,
+      banner: '/images/banner1.png',
     },
     {
       name: 'Smart TV 2000X',
@@ -39,6 +41,8 @@ const data = {
       countInStock: 5,
       description:
         'Experience the ultimate entertainment with our Smart TV 2000X. Enjoy stunning picture quality and access to a wide range of smart features.',
+      isFeatured: true,
+      banner: '/images/banner2.png',
     },
     {
       name: 'Laptop Pro 5000',
