@@ -7,6 +7,7 @@ import { XCircleIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const PAGE_SIZE = 2;
 
