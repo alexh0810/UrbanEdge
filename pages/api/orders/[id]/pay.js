@@ -1,12 +1,12 @@
-const { default: Order } = require('@/models/Order');
-const { default: db } = require('@/utils/db');
-const { getSession } = require('next-auth/react');
+import { getToken } from 'next-auth/jwt';
+import Order from '@/models/Order';
+import db from '@/utils/db';
 
 const handler = async (req, res) => {
-  const session = await getSession({ req });
+  const user = await getToken({ req, secret: process.env.SECRET });
 
-  if (!session) {
-    return res.status(401).send('Error: sigin required');
+  if (!user) {
+    return res.status(401).send('Signin required!');
   }
 
   await db.connect();

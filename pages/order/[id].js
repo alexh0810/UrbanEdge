@@ -68,7 +68,7 @@ function OrderScreen() {
     const fetchOrder = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/orders/${orderId}`);
+        const { data } = await axios.get(`/api/orders/${orderId}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
         console.log(data);
       } catch (err) {
@@ -102,7 +102,7 @@ function OrderScreen() {
       };
       loadPaypalScript();
     }
-  }, [order, orderId, paypalDispatch, successPay]);
+  }, [order, orderId, paypalDispatch, successPay, successDeliver]);
   const {
     shippingAddress,
     paymentMethod,
@@ -151,7 +151,10 @@ function OrderScreen() {
   async function deliverOrderHandler() {
     try {
       dispatch({ type: 'DELIVER_REQUEST' });
-      const { data } = await axios.put(`/api/orders/${order._id}/deliver`, {});
+      const { data } = await axios.put(
+        `/api/admin/orders/${order._id}/deliver`,
+        {}
+      );
       dispatch({ type: 'DELIVER_SUCCESS', payload: data });
       toast.success('Order is delivered!');
     } catch (err) {
