@@ -12,7 +12,6 @@ const handler = async (req, res) => {
   await db.connect();
   const users = await User.find({});
   await db.disconnect();
-  console.log(users);
   res.send(users);
 };
 
