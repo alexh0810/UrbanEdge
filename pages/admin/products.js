@@ -151,14 +151,13 @@ export default function AdminProductsScreen() {
                       <td className="p-5">{product.category}</td>
                       <td className="p-5">{product.countInStock}</td>
                       <td className="p-5">{product.rating}</td>
-                      <td className="p-5 flex-row">
+                      <td className="p-5">
                         <Link
                           href={`/admin/product/${product._id}`}
-                          legacyBehavior
+                          type="button"
+                          className="default-button"
                         >
-                          <a type="button" className="default-button">
-                            Edit
-                          </a>
+                          Edit
                         </Link>
                         &nbsp;
                         <button
